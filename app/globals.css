@@ -43,7 +43,7 @@ body {
 
 .calendar {
   border: 1px solid black;
-  height: 502px;
+  /* height: 502px; */
   width: 702px;
   text-align: center;
   margin: 0px auto 5px;
@@ -56,6 +56,13 @@ body {
   border: 5px solid white;
 }
 
+.calendar-top-row {
+  width: 700px;
+  clear: both;
+  margin: auto;
+  text-align: center;
+}
+
 .day-square {
   background-color: rgb(255, 255, 255);
   max-height: 200px;
@@ -66,9 +73,21 @@ body {
   float: left;
 }
 
-.banner-month-year{
+.banner-month-year {
   color: white;
   font-size:xx-large;
+  text-align: center;
+  /* width: 80%; */
+}
+
+.month-last-button {
+  float: left;
+  font-size: xx-large;
+}
+
+.month-next-button {
+  float: right;
+  font-size: xx-large;
 }
 
 .days-row {
@@ -92,4 +111,11 @@ body {
 .square-date {
   text-align: right;
   margin: 5px 10px;
+}
+
+.events-button {
+  width: 90%;
+  background-color: grey;
+  border: 1px solid black;
+  border-radius: 20px;
 }
