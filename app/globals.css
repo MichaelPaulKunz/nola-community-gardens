@@ -5,8 +5,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --square: 100px;
+  --square: 85px;
   --border: 2px;
+  --calendarWidth: 597px;
+  --calendarHeadingWidth: 595px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,14 +29,15 @@ body {
 
 .center-body {
   background-image: linear-gradient(to right, #73946996, #99949499);
-  height: 100%;
-  width: 98%;
-  margin: auto;
+  max-height: 100%;
+  margin: 0 10px 
+
 }
 
 .img-container {
-  margin: 10px auto;
-  margin-left: 5px;
+  /* margin: 10px auto; */
+  /* margin-left: 5px; */
+  margin-top: 10px;
 }
 
 .center-content {
@@ -43,21 +46,24 @@ body {
 
 .calendar {
   border: 1px solid black;
-  /* height: 502px; */
-  width: 702px;
+  width: var(--calendarWidth);
   text-align: center;
-  margin: 0px auto 5px;
+  margin: 0px auto 50px;
   overflow-x: auto;
-  margin: 0px auto 10px;
+  animation: fadeIn 0.5s;
+  	opacity: 1;
 }
 
-.calendar-container {
-  text-align: center;
-  border: 5px solid white;
+.calendar-border {
+  /* text-align: center;
+  border: 5px solid white; */
+  /* width: 705px; */
+  /* margin: 0 450px; */
+  /* float: left; */
 }
 
 .calendar-top-row {
-  width: 700px;
+  width: var(--calendarHeadingWidth);
   clear: both;
   margin: auto;
   text-align: center;
@@ -78,6 +84,7 @@ body {
   font-size:xx-large;
   text-align: center;
   /* width: 80%; */
+  font-weight: bold;
 }
 
 .month-last-button {
@@ -92,7 +99,7 @@ body {
 
 .days-row {
   border: 1px solid black;
-  width: 702px;
+  width: var(--calendarWidth);
   text-align: center;
   overflow-x: auto;
   margin: 5px auto 0px;
@@ -103,7 +110,7 @@ body {
   /* max-height: 50px; */
   color: white;
   border: var(--border) solid black;
-  height: var(--square) / 4;
+  /* height: var(--square) / 4; */
   width: var(--square);
   float: left;
 }
@@ -118,4 +125,30 @@ body {
   background-color: grey;
   border: 1px solid black;
   border-radius: 20px;
+}
+
+.fade-in {
+	animation: fadeIn .4s;
+  	opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+  	opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+  	opacity: 1;
+  }
+}
+
+.fade-out {
+	animation: fadeOut .4s;
+  	opacity: 0;
+}
+
+.modal-size {
+  max-width: 50rem;
 }

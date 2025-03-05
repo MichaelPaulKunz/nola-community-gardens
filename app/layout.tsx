@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -12,12 +12,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  initialScale: 1,
+  width: 'device-width'
+}
+
 export const metadata: Metadata = {
   title: "Nola Community Gardens",
   description: "Grow your own food. Acheive independence.",
-  viewport: {
-    initialScale: 1.0,
-  },
 };
 
 export default function RootLayout({
