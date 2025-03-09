@@ -1,6 +1,6 @@
 import React from 'react'
 import Calendar from "./CalendarMonth/Calendar";
-
+import Tabs from "./Tabs";
 
 
 
@@ -46,6 +46,7 @@ const Events = async () => {
 
   return (
     <div>
+      <Tabs />
       <Calendar events={events} fetchEvents={fetchEvents}/>
     </div>
   )

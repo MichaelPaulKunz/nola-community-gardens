@@ -15,7 +15,7 @@ export default function Home() {
         />
       </div>
       <Events />
-    <div>
+      <div>
         <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
       </div>      
     </div>
