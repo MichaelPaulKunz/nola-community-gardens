@@ -30,42 +30,53 @@ body {
 .center-body {
   background-image: linear-gradient(to right, #73946996, #99949499);
   max-height: 100%;
-  margin: 0 10px 
-
+  margin: 0 10px;
 }
 
 .img-container {
   /* margin: 10px auto; */
   /* margin-left: 5px; */
   margin-top: 10px;
+  /* max-width: 610px; */
 }
 
 .center-content {
   margin: 10px auto;
+  min-width: 610px;
+  text-align: center;
+  /* margin-left: 30%; */
 }
 
 .calendar {
   border: 1px solid black;
   width: var(--calendarWidth);
-  text-align: center;
-  margin: 0px auto 50px;
+  /* text-align: center; */
+  margin: 0px auto;
   overflow-x: auto;
-  animation: fadeIn 0.5s;
-  	opacity: 1;
+  /* animation: fadeIn 0.5s;
+  	opacity: 1; */
+}
+
+.calendar-container {
+  /* border: 5px solid white;  */
+  /* padding: 0 600px */
+
 }
 
 .calendar-border {
-  /* text-align: center;
-  border: 5px solid white; */
-  /* width: 705px; */
-  /* margin: 0 450px; */
+  text-align: center;
+  /* border: 5px solid white;  */
+  min-width: 610px;
+  /* max-width: 610px; */
+  /* width: 610px; */
+  /* margin: 0 0 0 450px; */
   /* float: left; */
 }
 
 .calendar-top-row {
   width: var(--calendarHeadingWidth);
   clear: both;
-  margin: auto;
+  margin: auto; 
   text-align: center;
 }
 
@@ -82,7 +93,7 @@ body {
 .banner-month-year {
   color: white;
   font-size:xx-large;
-  text-align: center;
+  /* text-align: center; */
   /* width: 80%; */
   font-weight: bold;
 }
@@ -117,7 +128,7 @@ body {
 
 .square-date {
   text-align: right;
-  margin: 5px 10px;
+  margin: 2px 10px;
 }
 
 .events-button {
@@ -125,6 +136,7 @@ body {
   background-color: grey;
   border: 1px solid black;
   border-radius: 20px;
+  margin-top: -.05px;
 }
 
 .fade-in {
@@ -151,4 +163,34 @@ body {
 
 .modal-size {
   max-width: 50rem;
+}
+
+.popcorn-container {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: yellow; 
+  border-radius: 50;
+  opacity: 1;
+  animation: pop 1s infinite;
+}
+@keyframes pop {
+  0% {
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
 }
