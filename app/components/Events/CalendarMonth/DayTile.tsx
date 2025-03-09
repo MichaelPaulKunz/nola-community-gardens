@@ -1,7 +1,8 @@
 // rafce
 
 import React from 'react'
-import { GardenEvent } from '../Events'
+import { GardenEvent } from '../Events';
+// import Popcorn from '../../Popcorn';
 
 interface Props {
   weekDay: string;
@@ -23,7 +24,7 @@ const DayTile = (props: Props) => {
           {
             props.eventLoaded ?
             <button onClick={() => props.openModal(props.dayEvents, props.fullDate)} className='events-button fade-in'>
-              <div style={{marginBottom: '-0.5rem'}}>{props.dayEvents.length}</div>
+              <div style={{marginBottom: '-0.4rem'}}>{props.dayEvents.length}</div>
               {
                 props.dayEvents.length === 1 ? 
                 <div>Event</div>
