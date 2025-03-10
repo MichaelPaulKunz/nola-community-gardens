@@ -1,12 +1,14 @@
-import React from 'react'
-import Calendar from "./CalendarMonth/Calendar";
-import Tabs from "./Tabs";
 
+'use client';
+
+import React from 'react'
+import Tabs from "./Tabs";
+import Calendar from "./CalendarMonth/Calendar";
+import List from "./List";
+import { useState, useEffect } from 'react';
 
 
 const today = new Date();
-const { GET_EVENTS_URL } = process.env;
-const getEvents = GET_EVENTS_URL;
 const offset = today.getTimezoneOffset();
 // get year, month, from until
 const year: number = today.getFullYear();
@@ -29,25 +31,50 @@ export interface GardenEvent {
   startMinute: number;
 }
 
-const Events = async () => {
+interface Props {
+  fetchEvents: (from: number, until: number, offset: number) => Promise<GardenEvent[]>;
+}
 
-  // get events for the month; 
-  // const res = await fetch(`${getEvents}?from=${from}&until=${until}&offset=${offset}`, {cache: 'no-store'}); 
-  // const events = await res.json();
-  // let events: object;
-
-  const fetchEvents = async (from: number, until: number, offset: number) => {
-    'use server';
-    const res = await fetch(`${getEvents}?from=${from}&until=${until}&offset=${offset}`, {cache: 'no-store'}); 
-    return res.json();
+const Events = (props: Props) => {
+  interface MyState {
+    events: GardenEvent[];
+    view: string;
   }
 
-  const events: GardenEvent[] = await fetchEvents(from, until, offset);
+  const [state, setState] = useState<MyState>({
+    events: [],
+    view: 'calendar'
+  });
+
+  useEffect(() => {
+    const { fetchEvents } = props;
+    let events: GardenEvent[];
+    async function getEvents() {
+      events = await fetchEvents(from, until, offset);
+    }
+    getEvents().then(() => {
+      setState(prevState => ({ ...prevState, events: events}))
+    });
+  }, [props])
+
+  const changeView = () => {
+    if (state.view === 'calendar') {
+      setState(prevState => ({...prevState, view: 'list'}))
+    } else {
+      setState(prevState=> ({...prevState, view: 'calendar'}));
+    }
+  }
 
   return (
     <div>
-      <Tabs />
-      <Calendar events={events} fetchEvents={fetchEvents}/>
+      <Tabs view={state.view} changeView={changeView} />
+      {
+        state.view === 'calendar' 
+        ?
+        <Calendar events={state.events} fetchEvents={props.fetchEvents}/>
+        :
+        <List />
+      }
     </div>
   )
 }

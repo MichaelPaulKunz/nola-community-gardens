@@ -200,7 +200,7 @@ body {
   /* background-color: grey; */
   /* border: 1px solid white; */
   max-height: 50px;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .tab {
@@ -210,5 +210,13 @@ body {
   max-height: 40px; 
   max-width: 200px;
   border: 1px solid white;
-  background-color: grey;
+  /* background-color: grey; */
+  color: white;
+  font-weight: bold;
+}
+
+.tab-pressed {
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+       box-shadow: inset 0px 0px 5px #c1c1c1;
 }
