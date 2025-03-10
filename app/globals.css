@@ -41,7 +41,7 @@ body {
 }
 
 .center-content {
-  margin: 10px auto;
+  margin: auto;
   min-width: 610px;
   text-align: center;
   /* margin-left: 30%; */
@@ -65,9 +65,9 @@ body {
 
 .calendar-border {
   text-align: center;
-  /* border: 5px solid white;  */
+  border: 5px solid white; 
   min-width: 610px;
-  /* max-width: 610px; */
+  max-width: 610px;
   /* width: 610px; */
   /* margin: 0 0 0 450px; */
   /* float: left; */
@@ -193,4 +193,30 @@ body {
     transform: scale(0);
     opacity: 0;
   }
+}
+
+.tab-bar {
+  max-width: 10px;
+  /* background-color: grey; */
+  /* border: 1px solid white; */
+  max-height: 50px;
+  margin-top: 5px;
+}
+
+.tab {
+  margin: 5px 0px 0 0px;
+  textAlign: center;
+  border-radius: 0.5rem 0.5rem 0 0;
+  max-height: 40px; 
+  max-width: 200px;
+  border: 1px solid white;
+  /* background-color: grey; */
+  color: white;
+  font-weight: bold;
+}
+
+.tab-pressed {
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+       box-shadow: inset 0px 0px 5px #c1c1c1;
 }

@@ -9,8 +9,6 @@ import MyModal from '../Modals/MyModal';
 import { GardenEvent } from '../Events'
 
 const daysOfWeek: string[] = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-
-
 interface Square {
   id: number;
   weekDay: string;
@@ -55,7 +53,7 @@ const Calendar = (props: Props) => {
     const days = buildCalendar(today);
     const { events } = props;
     setState(prevState => ({ ...prevState, squares: days, monthDate: today }))
-    setState(prevState => ({...prevState, squares: addEvents(days, events), events: events,  eventsLoaded: true}))
+    setState(prevState => ({...prevState, squares: addEvents(days, events), events: events, eventsLoaded: true}))
   }, [props])
 
   const nextMonth = async () => {
@@ -97,7 +95,7 @@ const Calendar = (props: Props) => {
   return (
     <div className='calendar-container'>
       <MyModal isOpen={state.isModalOpen} closeModal={closeModal} dayEvents={state.dayEvents} selectedDate={state.selectedDate} />
-      <div className={`calendar-border ${state.fade}`}>
+      <div className={`calendar-border ${state.fade} center-content`}>
         <div className='calendar-top-row'>
           <button className='month-last-button' onClick={lastMonth} disabled={!state.eventsLoaded}>⬅️</button>
           <button className='month-next-button' onClick={nextMonth} disabled={!state.eventsLoaded}>➡️</button>
@@ -115,7 +113,8 @@ const Calendar = (props: Props) => {
 }
 
 /**
- * Functions to build date and add Events Not needed inside Functional Component. They do not directly interact with State.
+ * Static functions to build date and add Events Not needed inside Functional Component. 
+ * They do not directly interact with State.
  **/
 
 const buildCalendar = (date: Date) => {
