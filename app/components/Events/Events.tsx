@@ -5,19 +5,8 @@ import React from 'react'
 import Tabs from "./Tabs";
 import Calendar from "./CalendarMonth/Calendar";
 import List from "./List";
-import { useState, useEffect } from 'react';
-
-
-const today = new Date();
-const offset = today.getTimezoneOffset();
-// get year, month, from until
-const year: number = today.getFullYear();
-const month: number = today.getMonth();
-const firstDayMonth = new Date(year, month, 1);
-const firstDayNextMonth = new Date(year, month + 1, 1)
-const from = firstDayMonth.getTime();
-const until = firstDayNextMonth.getTime() - 1;
-
+// import Popcorn from "../Popcorn";
+import { useState } from 'react';
 export interface GardenEvent {
   weekDay: string;
   dates: string[];
@@ -30,6 +19,7 @@ export interface GardenEvent {
   startHour: number;
   startMinute: number;
 }
+
 
 interface Props {
   fetchEvents: (from: number, until: number, offset: number) => Promise<GardenEvent[]>;
@@ -46,17 +36,6 @@ const Events = (props: Props) => {
     view: 'calendar'
   });
 
-  useEffect(() => {
-    const { fetchEvents } = props;
-    let events: GardenEvent[];
-    async function getEvents() {
-      events = await fetchEvents(from, until, offset);
-    }
-    getEvents().then(() => {
-      setState(prevState => ({ ...prevState, events: events}))
-    });
-  }, [props])
-
   const changeView = () => {
     if (state.view === 'calendar') {
       setState(prevState => ({...prevState, view: 'list'}))
@@ -71,10 +50,13 @@ const Events = (props: Props) => {
       {
         state.view === 'calendar' 
         ?
-        <Calendar events={state.events} fetchEvents={props.fetchEvents}/>
+        <Calendar fetchEvents={props.fetchEvents}/>
         :
-        <List />
+        <List fetchEvents={props.fetchEvents}/>
       }
+      {/* <div className="pop-container">
+        <Popcorn />
+      </div> */}
     </div>
   )
 }

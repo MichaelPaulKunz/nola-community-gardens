@@ -6,7 +6,6 @@ interface Props {
 }
 
 const EventListing = (props: Props) => {
-  console.log('props: ', props);
   const { event } = props;
   const { address, location, eventName, start, end } = event;
   const startString = parseTime(start);

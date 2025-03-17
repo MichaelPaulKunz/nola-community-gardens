@@ -18,13 +18,20 @@ interface Square {
   dayEvents: GardenEvent[];
 }
 
-
+let globalEvents: GardenEvent[];
 interface Props {
-  events: GardenEvent[];
   fetchEvents: (from: number, until: number, offset: number) => Promise<GardenEvent[]>;
 }
 
 const today = new Date();
+const offset = today.getTimezoneOffset();
+// get year, month, from until
+const year: number = today.getFullYear();
+const month: number = today.getMonth();
+const firstDayMonth = new Date(year, month, 1);
+const firstDayNextMonth = new Date(year, month + 1, 1)
+const from = firstDayMonth.getTime();
+const until = firstDayNextMonth.getTime() - 1;
 
 const Calendar = (props: Props) => {
   interface MyState {
@@ -51,9 +58,21 @@ const Calendar = (props: Props) => {
 
   useEffect(() => {
     const days = buildCalendar(today);
-    const { events } = props;
-    setState(prevState => ({ ...prevState, squares: days, monthDate: today }))
-    setState(prevState => ({...prevState, squares: addEvents(days, events), events: events, eventsLoaded: true}))
+    setState(prevState => ({ ...prevState, squares: days, monthDate: today, fade: 'fade-in' }));
+    const { fetchEvents } = props;
+    if (!globalEvents) {
+      fetchEvents(from, until, offset).then(events => {
+        globalEvents = events;
+        setState(prevState => ({...prevState, squares: addEvents(days, events), events: events}));
+        setState(prevState => ({...prevState, eventsLoaded: true}));
+      })
+    } else {
+      setState(prevState => ({...prevState, squares: addEvents(days, globalEvents), events: globalEvents}));
+      setState(prevState => ({...prevState, eventsLoaded: true}));
+    }
+    return () => {
+      setState(prevState => ({...prevState, fade: 'fade-out'}));
+    }
   }, [props])
 
   const nextMonth = async () => {
@@ -108,6 +127,7 @@ const Calendar = (props: Props) => {
           {state.squares.map((square)=> <DayTile key={square.id} dayEvents={square.dayEvents} fullDate={square.fullDate} weekDay={square.weekDay} dateDay={square.dateDay} isActiveDay={square.isActiveDay} openModal={openModal} eventLoaded={state.eventsLoaded}/>)}
         </div>
       </div>
+      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
     </div>
   )
 }
