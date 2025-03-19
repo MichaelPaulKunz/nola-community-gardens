@@ -4,13 +4,14 @@ import EventListing  from '../EventListing'
 import { GardenEvent } from '../Events'
 
 interface Props {
+  dayString: string;
   isOpen: boolean;
   closeModal: () => void;
   dayEvents: GardenEvent[];
   selectedDate: string;
 }
 
-export default function MyModal(props: Props) {
+export default function EventsModal(props: Props) {
   const yearMonthDate: string[] = props.selectedDate.split('-');
   const dateArray: string[] = new Date(+yearMonthDate[0], +yearMonthDate[1], +yearMonthDate[2]).toString().split(' ');
   const readableDate: string = dateArray[0] + ' ' + dateArray[1] + ' ' + dateArray[2] + ' ' + dateArray[3];
@@ -47,7 +48,7 @@ export default function MyModal(props: Props) {
                         type="button"
                         className="inline-flex rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                         onClick={props.closeModal}
-                        style={{color: 'red', textAlign: 'right', marginLeft: '95%'}}
+                        style={{color: 'red', textAlign: 'right', marginLeft: '95%', borderRadius: '40%', fontWeight: 'bold'}}
                       >
                         X
                       </button>
@@ -61,7 +62,7 @@ export default function MyModal(props: Props) {
                     </DialogTitle>
                     <div className="mt-2">
                       <div className="text-sm text-gray-500">
-                        {props.dayEvents.map((event, index) => <div key={`day_event_${index}`}><EventListing event={event}/></div>)}
+                        {props.dayEvents.map((event, index) => <div key={`day_event_${index}`}><EventListing dayString={props.dayString} event={event}/></div>)}
                       </div>
                     </div>
                 </DialogPanel>

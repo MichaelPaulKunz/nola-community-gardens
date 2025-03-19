@@ -161,6 +161,11 @@ body {
   	opacity: 0;
 }
 
+.slow-fade-out {
+	animation: fadeOut 3s;
+  	opacity: 0;
+}
+
 .modal-size {
   max-width: 50rem;
 }

@@ -14,6 +14,25 @@ export interface GardenEvent {
   startMinute: number;
 }
 
+export interface UnformattedEvent {
+  id: number;
+  eventName: string;
+  address: string;
+  location: string;
+  start: number;
+  end: string;
+  recurring: string;
+}
+
+export interface Day {
+  year: number;
+  month: number;
+  day: number;
+  fullDate: string;
+  dayOfWeek: string;
+  events: GardenEvent[];
+}
+
 const { GET_EVENTS_URL } = process.env;
 const getEvents = GET_EVENTS_URL;
 

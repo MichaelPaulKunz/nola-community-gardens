@@ -5,8 +5,9 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import DayTile from './DayTile';
 import DayHeading from './DayHeading';
-import MyModal from '../Modals/MyModal';
-import { GardenEvent } from '../Events'
+import EventsModal from '../Modals/EventsModal';
+import { GardenEvent } from '../Events';
+import { Day, UnformattedEvent } from '../../../page';
 
 const daysOfWeek: string[] = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 interface Square {
@@ -18,9 +19,11 @@ interface Square {
   dayEvents: GardenEvent[];
 }
 
-let globalEvents: GardenEvent[];
+let globalEvents: UnformattedEvent[];
 interface Props {
-  fetchEvents: (from: number, until: number, offset: number) => Promise<GardenEvent[]>;
+  fetchEvents: (from: number, until: number, offset: number) => Promise<UnformattedEvent[]>;
+  formatEvents: (events: UnformattedEvent[], days: Day[]) => GardenEvent[];
+  buildDays: (from: number, until: number) => Day[]; 
 }
 
 const today = new Date();
@@ -58,16 +61,23 @@ const Calendar = (props: Props) => {
 
   useEffect(() => {
     const days = buildCalendar(today);
+    console.log('calendar days: ', days);
     setState(prevState => ({ ...prevState, squares: days, monthDate: today, fade: 'fade-in' }));
-    const { fetchEvents } = props;
+    const { fetchEvents, buildDays, formatEvents } = props;
     if (!globalEvents) {
       fetchEvents(from, until, offset).then(events => {
+        // console.log('events: ', events);
         globalEvents = events;
-        setState(prevState => ({...prevState, squares: addEvents(days, events), events: events}));
+        const builtDays = buildDays(+from, +until);
+        console.log('builtDays: ', builtDays);
+        const formattedEvents = formatEvents(events, builtDays);
+        setState(prevState => ({...prevState, squares: addEvents(days, formattedEvents), events: formattedEvents}));
         setState(prevState => ({...prevState, eventsLoaded: true}));
       })
     } else {
-      setState(prevState => ({...prevState, squares: addEvents(days, globalEvents), events: globalEvents}));
+      const builtDays = buildDays(+from, +until);
+      const formattedEvents = formatEvents(globalEvents, builtDays);
+      setState(prevState => ({...prevState, squares: addEvents(days, formattedEvents), events: formattedEvents}));
       setState(prevState => ({...prevState, eventsLoaded: true}));
     }
     return () => {
@@ -83,10 +93,15 @@ const Calendar = (props: Props) => {
     const lastDayOfNextMonth = new Date(state.monthDate.getFullYear(), nextMonth + 1, 1);
     const days = buildCalendar(firstDayOfNextMonth);
     const daylightSavings = lastDayOfNextMonth.getTimezoneOffset() - firstDayOfNextMonth.getTimezoneOffset(); 
+    // console.log('daylightSavings: ', daylightSavings);
     const subtractFromNextMonth = daylightSavings === 0 ? 1 : 1 + (daylightSavings * 60000);
     setState(prevState => ({...prevState, squares: days, monthDate: firstDayOfNextMonth, dayEvents: [], fade: 'fade-in'  }));
     const events = await props.fetchEvents(firstDayOfNextMonth.getTime(), lastDayOfNextMonth.getTime() - subtractFromNextMonth, firstDayOfNextMonth.getTimezoneOffset());
-    setState(prevState => ({...prevState, squares: addEvents(days, events), eventsLoaded: true}));
+    // console.log('first Day: ', firstDayOfNextMonth);
+    // console.log('last day: ', lastDayOfNextMonth);
+    const builtDays = props.buildDays(firstDayOfNextMonth.getTime(), lastDayOfNextMonth.getTime() - 1)
+    const formattedEvents = props.formatEvents(events, builtDays);
+    setState(prevState => ({...prevState, squares: addEvents(days, formattedEvents), eventsLoaded: true}));
   }
 
   const lastMonth = async () => {
@@ -100,7 +115,9 @@ const Calendar = (props: Props) => {
     const subtractFromLastMonth = daylightSavings === 0 ? 1 : 1 + (daylightSavings * 60000);
     setState( prevState => ({ ...prevState, squares: days, monthDate: firstDayOfLastMonth, events: [], fade: 'fade-in' }));
     const events = await props.fetchEvents(firstDayOfLastMonth.getTime(), lastDayOfLastMonth.getTime() - subtractFromLastMonth, firstDayOfLastMonth.getTimezoneOffset());
-    setState(prevState => ({...prevState, squares: addEvents(days, events), eventsLoaded: true }));
+    const builtDays = props.buildDays(firstDayOfLastMonth.getTime(), lastDayOfLastMonth.getTime() - 1);
+    const formattedEvents = props.formatEvents(events, builtDays);
+    setState(prevState => ({...prevState, squares: addEvents(days, formattedEvents), eventsLoaded: true }));
   }
 
   const openModal = (events: GardenEvent[], selectedDate: string) => {
@@ -113,7 +130,7 @@ const Calendar = (props: Props) => {
 
   return (
     <div className='calendar-container'>
-      <MyModal isOpen={state.isModalOpen} closeModal={closeModal} dayEvents={state.dayEvents} selectedDate={state.selectedDate} />
+      <EventsModal dayString={today.toString()}isOpen={state.isModalOpen} closeModal={closeModal} dayEvents={state.dayEvents} selectedDate={state.selectedDate} />
       <div className={`calendar-border ${state.fade} center-content`}>
         <div className='calendar-top-row'>
           <button className='month-last-button' onClick={lastMonth} disabled={!state.eventsLoaded}>⬅️</button>
