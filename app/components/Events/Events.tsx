@@ -9,6 +9,7 @@ import List from "./List";
 import { useState } from 'react';
 import { UnformattedEvent, Day } from '../../page';
 export interface GardenEvent {
+  id: number;
   weekDay: string;
   dates: string[];
   start: string;
@@ -19,6 +20,7 @@ export interface GardenEvent {
   timeStamps: number[];
   startHour: number;
   startMinute: number;
+  ogTimeStamp: number;
 }
 
 const daysOfWeek: string[] = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
@@ -62,11 +64,14 @@ const Events = (props: Props) => {
   } 
 
   const formatEvents = (events: UnformattedEvent[], days: Day[]) => {
+    console.log('events: ', events);
     const oneOff = events.filter(event => !event.recurring);
     const weekly = events.filter(event => event.recurring === 'week');
     const monthly = events.filter(event => event.recurring === 'month');
 
     const singleEvents = oneOff.map(event => {
+      const ogTimeStamp = event.start;
+      const id = event.id;
       const eventDate = new Date(event.start);
       const timeStamps = [eventDate.getTime()]; // make array to align with format of recurring
       const weekDay = daysOfWeek[eventDate.getDay()];
@@ -82,10 +87,12 @@ const Events = (props: Props) => {
         end = `${endDate.getHours()}:${endDate.getMinutes().toString()}`;
       }
       const { eventName, location, address } = event;
-      return { weekDay, dates, start, end, eventName, location, address, timeStamps, startHour, startMinute };
+      return { id, weekDay, dates, start, end, eventName, location, address, timeStamps, startHour, startMinute, ogTimeStamp };
     })
 
     const weeklyEvents = weekly.map(event => {
+      const ogTimeStamp = event.start;
+      const id = event.id;
       const eventDate = new Date(event.start);
       const weekDay = daysOfWeek[eventDate.getDay()];
       const { eventName, location, address } = event;
@@ -111,11 +118,13 @@ const Events = (props: Props) => {
           }
         }
       })
-      return { weekDay, dates, start, end, eventName, location, address, timeStamps, startHour, startMinute };
+      return { id, weekDay, dates, start, end, eventName, location, address, timeStamps, startHour, startMinute, ogTimeStamp };
     })
 
     const monthlyEvents = monthly.map(event => {
       // stop
+      const id = event.id;
+      const ogTimeStamp = event.start;
       const eventDate = new Date(event.start);
       const weekDay = daysOfWeek[eventDate.getDay()];
       const { eventName, location, address } = event;
@@ -144,7 +153,7 @@ const Events = (props: Props) => {
         dates.push(eventDay.fullDate);
         timeStamps.push(new Date(eventDay.year, eventDay.month, eventDay.day, startHour, startMinute).getTime());
       }
-      return { weekDay, dates, start, end, eventName, location, address, timeStamps, startHour, startMinute};
+      return { id, weekDay, dates, start, end, eventName, location, address, timeStamps, startHour, startMinute, ogTimeStamp};
     })
 
     return singleEvents.concat(weeklyEvents).concat(monthlyEvents);

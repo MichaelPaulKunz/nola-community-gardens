@@ -92,7 +92,7 @@ const List = (props: Props) => {
                     </div>
                     {day.events.map((event, eventIndex) =>
                       <div className="text-sm text-gray-500 list-event" key={`event-parent-${index}-${eventIndex}`}>
-                        <EventListing dayString={today.toString()} key={`event-${index}-${eventIndex}`} event={event}/>
+                        <EventListing selectedDate={`${day.year}-${day.month}-${day.day}`} dayString={today.toString()} key={`event-${index}-${eventIndex}`} event={event}/>
                       </div> 
                     )}
                   </div> 

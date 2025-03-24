@@ -62,7 +62,7 @@ export default function EventsModal(props: Props) {
                     </DialogTitle>
                     <div className="mt-2">
                       <div className="text-sm text-gray-500">
-                        {props.dayEvents.map((event, index) => <div key={`day_event_${index}`}><EventListing dayString={props.dayString} event={event}/></div>)}
+                        {props.dayEvents.map((event, index) => <div key={`day_event_${index}`}><EventListing selectedDate={props.selectedDate} dayString={props.dayString} event={event}/></div>)}
                       </div>
                     </div>
                 </DialogPanel>

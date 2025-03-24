@@ -15,15 +15,20 @@ interface Props {
 }
 
 const DayTile = (props: Props) => {
+  console.log('fullDate: ', props.fullDate);
+  const today = new Date ();
+  const todayFullDate = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
+  console.log('todayFullDate: ', todayFullDate);
+  const backGround = props.fullDate === todayFullDate ? 'limegreen' : 'white';
 
   return (
-    <div className='day-square' style={{backgroundColor: props.isActiveDay ? 'white' : 'grey' }}>
+    <div className='day-square' style={{backgroundColor: props.isActiveDay ? backGround : 'grey'}}>
       {props.isActiveDay ?
         <div>
           <div className='square-date'>{props.dateDay}</div>
           {
             props.eventLoaded ?
-            <button onClick={() => props.openModal(props.dayEvents, props.fullDate)} className='events-button fade-in'>
+            <button onClick={() => props.openModal(props.dayEvents, props.fullDate)} style={{color: 'white'}} className='events-button fade-in'>
               <div style={{marginBottom: '-0.4rem'}}>{props.dayEvents.length}</div>
               {
                 props.dayEvents.length === 1 ? 
