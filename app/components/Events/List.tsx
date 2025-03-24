@@ -2,11 +2,12 @@ import React from 'react'
 import {useState, useEffect } from 'react';
 import { GardenEvent } from './Events'
 import EventListing from './EventListing';
+import { Day, UnformattedEvent } from '../../page';
 
 const daysOfWeek: string[] = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 const monthsOfYear: string[] =['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
-let globalEvents: GardenEvent[];
+let globalEvents: UnformattedEvent[];
 
 interface DayObject {
   fullDate: string;
@@ -17,7 +18,9 @@ interface DayObject {
   events: GardenEvent[];
 }
 interface Props {
-  fetchEvents: (from: number, until: number, offset: number) => Promise<GardenEvent[]>;
+  fetchEvents: (from: number, until: number, offset: number) => Promise<UnformattedEvent[]>;
+  formatEvents: (events: UnformattedEvent[], days: Day[]) => GardenEvent[];
+  buildDays: (from: number, until: number) => Day[];
 }
 
 const today = new Date();
@@ -49,16 +52,20 @@ const List = (props: Props) => {
     console.log('monthByDays: ', monthByDays(today));
     if (globalEvents) {
       const days = monthByDays(today);
-      const daysWithEvents = addEvents(days, globalEvents);
-      setState(prevState => ({...prevState, events: globalEvents, days: daysWithEvents, fade: 'fade-in'
+      const builtDays = props.buildDays(from, until);
+      const formattedEvents = props.formatEvents(globalEvents, builtDays);
+      const daysWithEvents = addEvents(days, formattedEvents);
+      setState(prevState => ({...prevState, events: formattedEvents, days: daysWithEvents, fade: 'fade-in'
       }));
       console.log(globalEvents);
     } else {
       props.fetchEvents(from, until, offset).then((data) => {
         globalEvents = data;
         const days = monthByDays(today);
-        const daysWithEvents = addEvents(days, globalEvents);
-        setState(prevState => ({...prevState, events: globalEvents, days: daysWithEvents, fade: 'fade-in'}));
+        const builtDays = props.buildDays(from, until);
+        const formattedEvents = props.formatEvents(globalEvents, builtDays);
+        const daysWithEvents = addEvents(days, formattedEvents);
+        setState(prevState => ({...prevState, events: formattedEvents, days: daysWithEvents, fade: 'fade-in'}));
         console.log(globalEvents);
       })
     }
@@ -85,7 +92,7 @@ const List = (props: Props) => {
                     </div>
                     {day.events.map((event, eventIndex) =>
                       <div className="text-sm text-gray-500 list-event" key={`event-parent-${index}-${eventIndex}`}>
-                        <EventListing key={`event-${index}-${eventIndex}`} event={event}/>
+                        <EventListing selectedDate={`${day.year}-${day.month}-${day.day}`} dayString={today.toString()} key={`event-${index}-${eventIndex}`} event={event}/>
                       </div> 
                     )}
                   </div> 
