@@ -291,6 +291,7 @@ body {
   .calendar {
     border: 1px solid black;
     width: 100%;
+    height: var(--calendarWidth);
     /* text-align: center; */
     margin: 0px auto;
     overflow-x: auto;
@@ -316,7 +317,7 @@ body {
     border-radius: 10px;
     margin-top: -1.5px;
     margin-bottom: 2px;
-    font-size: 0.8rem;
+    font-size: 60%;
   }
 
   .day-square {
@@ -336,6 +337,12 @@ body {
     text-align: center;
     overflow-x: auto;
     margin: 5px auto 0px;
+  }
+
+  .square-date {
+    text-align: right;
+    margin: 2px 5px;
+    font-size: 60%;
   }
   
   
