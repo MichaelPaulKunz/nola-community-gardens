@@ -302,6 +302,7 @@ body {
   .calendar-border {
     text-align: center;
     width: 100%;
+    margin-top: 5px;
     /* border: 5px solid white; 
     min-width: 610px;
     max-width: 610px; 
@@ -315,7 +316,7 @@ body {
     background-color: grey;
     border: 1px solid black;
     border-radius: 10px;
-    margin-top: -1.5px;
+    margin-top: -3px;
     margin-bottom: 2px;
     font-size: 60%;
   }
