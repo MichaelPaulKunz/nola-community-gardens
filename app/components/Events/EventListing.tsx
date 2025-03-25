@@ -11,7 +11,6 @@ interface Props {
 }
 
 
-
 const EventListing = (props: Props) => {
   interface MyState {
     showDirectionsToolTip: boolean;
@@ -41,7 +40,7 @@ const EventListing = (props: Props) => {
   } else {
     endString = '??'
   }
-
+  console.log('props.selectedDate: ' , props.selectedDate);
   const dateArray = props.selectedDate.split('-');
   console.log('dateArray: ', dateArray);
   const timeZoneDate = new Date(+dateArray[0], +dateArray[1], +dateArray[2]);

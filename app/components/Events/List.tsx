@@ -13,7 +13,7 @@ interface DayObject {
   fullDate: string;
   dayOfWeek: string;
   day: number;
-  month: string;
+  month: number;
   year: number;
   events: GardenEvent[];
 }
@@ -88,7 +88,7 @@ const List = (props: Props) => {
                   day.events.length ?
                   <div key={`parent_${index}`} className="mt-2">
                     <div className='list-days' key={`day-${index}`}>
-                      {`${day.dayOfWeek} ${day.month} ${day.day} ${day.year}`}
+                      {`${day.dayOfWeek} ${monthsOfYear[month]} ${day.day} ${day.year}`}
                     </div>
                     {day.events.map((event, eventIndex) =>
                       <div className="text-sm text-gray-500 list-event" key={`event-parent-${index}-${eventIndex}`}>
@@ -123,7 +123,7 @@ function monthByDays(date: Date) {
       fullDate: `${year}-${month}-${i}`,
       dayOfWeek: weekDay < 7 ? daysOfWeek[weekDay] : daysOfWeek[weekDay % 7],
       day: i,
-      month: monthsOfYear[month],
+      month: month,
       year: year,
       events: []
     };
