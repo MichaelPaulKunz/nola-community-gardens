@@ -12,6 +12,7 @@ interface Props {
 }
 
 export default function EventsModal(props: Props) {
+  console.log('selectedDate: ', props.selectedDate);
   const yearMonthDate: string[] = props.selectedDate.split('-');
   const dateArray: string[] = new Date(+yearMonthDate[0], +yearMonthDate[1], +yearMonthDate[2]).toString().split(' ');
   const readableDate: string = dateArray[0] + ' ' + dateArray[1] + ' ' + dateArray[2] + ' ' + dateArray[3];

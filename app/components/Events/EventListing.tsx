@@ -42,7 +42,11 @@ const EventListing = (props: Props) => {
     endString = '??'
   }
 
-  const timeZone = '(' + props.dayString.split('(')[1];
+  const dateArray = props.selectedDate.split('-');
+  console.log('dateArray: ', dateArray);
+  const timeZoneDate = new Date(+dateArray[0], +dateArray[1], +dateArray[2]);
+  console.log('timeZoneDate: ', timeZoneDate);
+  const timeZone = '(' + timeZoneDate.toString().split('(')[1];
 
   const selectMap = () => {
     if // apple maps
