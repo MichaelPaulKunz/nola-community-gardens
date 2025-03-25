@@ -350,9 +350,9 @@ body {
   .tab-bar {
     max-width: 45%;
     background-color: grey; 
-    border: 1px solid white; 
-    max-height: 100px;
-    margin-top: 50px;
+    border: 0px solid white; 
+    /* max-height: 100px; */
+    margin-top: 10px;
   }
 
   .tab {
