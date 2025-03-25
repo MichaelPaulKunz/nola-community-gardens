@@ -49,12 +49,12 @@ const Tabs = (props: MyProps) => {
 
   return (
     <div className="center-content tab-bar">
-      <ul className="hidden text-lg font-medium text-center text-gray-900 shadow-sm sm:flex dark:divide-gray-700 dark:text-gray-400">
+      <ul className="text-lg font-medium text-center text-gray-900 shadow-sm sm:flex dark:divide-gray-700 dark:text-gray-400">
           <li className="w-full">
-              <button onClick={selectCal} style={{float: 'left', backgroundColor: state.calendarBg}} className={` ${state.calendarShadow} tab inline-block w-full border-r border-gray-200 dark:border-gray-700 dark:bg-gray-700 dark:text-white" aria-current="page"`}>Calendar</button>
+              <button onClick={selectCal} style={{float: 'left', backgroundColor: state.calendarBg}} className={` ${state.calendarShadow} tab inline-block border-r border-gray-200 dark:border-gray-700 dark:bg-gray-700 dark:text-white" aria-current="page"`}>Calendar</button>
           </li>
           <li className="w-full">
-              <button onClick={selectList} style={{float: 'right', backgroundColor: state.listBg}} className={`${state.listShadow} tab inline-block w-full border-r border-gray-200 dark:border-gray-700 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700`}>List</button>
+              <button onClick={selectList} style={{float: 'right', backgroundColor: state.listBg}} className={`${state.listShadow} tab inline-block border-r border-gray-200 dark:border-gray-700 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700`}>List</button>
           </li>
       </ul>
     </div>

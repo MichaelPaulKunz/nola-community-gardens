@@ -220,6 +220,7 @@ body {
   /* background-color: grey; */
   color: white;
   font-weight: bold;
+  width: 100%;
 }
 
 .tab-pressed {
@@ -342,9 +343,32 @@ body {
 
   .square-date {
     text-align: right;
-    margin: 2px 5px;
+    margin: 2px 5px -.5px;
     font-size: 60%;
   }
+
+  .tab-bar {
+    max-width: 45%;
+    background-color: grey; 
+    border: 1px solid white; 
+    max-height: 100px;
+    margin-top: 50px;
+  }
+
+  .tab {
+    margin: 5px 0px 0 0px;
+    textAlign: center;
+    border-radius: 0.5rem 0.5rem 0 0;
+    max-height: 40px; 
+    max-width: 50%;
+    border: 1px solid white;
+    /* background-color: grey; */
+    color: white;
+    font-weight: bold;
+  }
   
-  
+  /* .w-full {
+    width: 70%;
+  }
+   */
 }
