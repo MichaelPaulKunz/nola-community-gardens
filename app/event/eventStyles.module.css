@@ -1,0 +1,255 @@
+.centerBody {
+  background-image: linear-gradient(to right, #73946996, #99949499);
+  max-height: 100%;
+  margin: 0 10px;
+}
+
+.eventContainer {
+  /* margin: 10px auto; */
+  /* margin-left: 5px; */
+  margin-top: 10px;
+  /* max-width: 610px; */
+}
+
+.centerContent {
+  margin: auto;
+  min-width: 610px;
+  text-align: center;
+  /* margin-left: 30%; */
+}
+
+.flyerContainer {
+  width: 606.8px;
+  height: 798px;
+  text-align: center;
+}
+
+.flyer {
+  width: 252px;
+  height: 399px;
+  border: 5px solid white;
+  /* text-align: center; */
+}
+
+.floatRight {
+  float: right;
+  width: 50%;
+  margin-right: 2.5rem;
+}
+
+.eventInfo {
+  text-align: left;
+  /* width: 100px; */
+  color: white;
+}
+
+.eventHeading {
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0px 0px 0px 5px;
+}
+
+.infoContainer {
+  color: white;
+  float: right;
+}
+
+.infoContainerOverflow {
+  color: white;
+  float: right;
+  width: 100%;
+  text-align: left;
+  margin-right: 20px;
+  padding-left: 20px;
+}
+
+.timeContainer {
+  border: 4px solid white;
+  width: 56.5%;
+}
+
+.eventDay {
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: -5px;
+}
+
+.timeAndCalContainer {
+  margin-left: 1px;
+}
+
+.timeDisplay {
+  margin-left: -10px;
+  padding-top: 10px;
+  font-weight: bold;
+  margin-top: 4px;
+  float: right;
+  width: 75%;
+  font-size: 1rem;
+}
+
+.calendarIcon {
+  cursor: pointer;
+  width: 20%;
+  height: 20%;
+  fill: white;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.placeContainer {
+  margin: 10px 0;
+  border: 4px solid white;
+  width: 56.5%;
+  font-weight: bold;
+}
+
+.location {
+  margin-left: 10px;
+  font-size: 1.1rem;
+}
+
+.address {
+  margin-left: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --square: 14.255%;
+    --border: 1.5px;
+    --calendarWidth: 100%;
+    --calendarHeadingWidth: 100%;
+  }
+  
+  body {
+    /* background-color: lightgreen; */
+  }
+
+  .centerBody {
+    background-image: linear-gradient(to right, #73946996, #99949499);
+    width: 100%;
+    height: 1000%;
+    margin: 0px 0px;
+  }
+
+  .flyerContainer {
+    width: 20%;
+    height: auto;
+    text-align: center;
+  }
+  
+  .flyer {
+    width: auto;
+    height: auto;
+    /* text-align: center; */
+  }
+
+  .floatRight {
+    float: right;
+    width: 50%;
+    margin-right: 2.5rem;
+  }
+
+  .centerContent {
+    margin: auto;
+    min-width: 0px;
+    text-align: left;
+    margin-left: 0%;
+    width: 100%;
+  }
+
+  .flyerContainer {
+    width: 40%;
+    height: auto;
+    text-align: center;
+  }
+
+  .eventHeading {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+  }
+
+  .infoContainer {
+    color: white;
+    float: right;
+    width: 100%;
+    margin-top: -2%;
+    margin-left: -80%;
+    /* visibility: hidden; */
+  }
+
+  .infoContainerOverflow {
+    color: white;
+    float: left;
+    width: 50%;
+    text-align: left;
+    margin-right: 20px;
+    padding-left: 20px;
+    visibility: hidden;
+
+  }
+
+  .timeContainer {
+    border: 4px solid white;
+    width: 100%;
+  }
+
+  .placeContainer {
+    margin: 10px 0;
+    border: 4px solid white;
+    width: 100%;
+    font-weight: bold;
+  }
+
+  .location {
+    margin-left: 10px;
+    font-size: 1.1rem;
+  }
+  
+  .address {
+    margin-left: 5px;
+    font-size: .9rem;
+    cursor: pointer;
+  }
+
+  .eventDay {
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: -5px;
+  }
+  
+  .timeAndCalContainer {
+    margin-left: 1px;
+  }
+  
+  .timeDisplay {
+    margin-left: -10px;
+    padding-top: 10px;
+    font-weight: bold;
+    margin-top: 4px;
+    float: right;
+    width: 75%;
+    font-size: .9rem;
+  }
+  
+  .calendarIcon {
+    cursor: pointer;
+    width: 20%;
+    height: 20%;
+    fill: white;
+    margin-left: 10px;
+    margin-bottom: 5px;
+  }
+  
+
+}

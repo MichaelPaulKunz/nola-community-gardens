@@ -2,6 +2,7 @@ import React from 'react';
 import Image from "next/image";
 import TimeInfo from './components/TimeInfo';
 import PlaceInfo from './components/PlaceInfo';
+import styles from '../event/eventStyles.module.css';
 
 export interface EventInfo {
   eventName: string;
@@ -32,10 +33,10 @@ const Event = async ({
   const eventInfo = await getFullEvent();
 
   return (
-    <div className="center-body">
-      <div className="img-container">
+    <div className={styles.centerBody}>
+      <div className={styles.eventContainer}>
               <Image
-                      className="center-content"
+                      className={styles.centerContent}
                       src="/banner-main.png"
                       alt="Nola Community Gardens"
                       height={312 * 0.74}
@@ -45,35 +46,35 @@ const Event = async ({
               />
       </div>
       {eventInfo.isValidEvent ? 
-        <div className="img-container" style={{}}>
-          <div style={{float: 'right', width: '50%', marginRight: '2.5rem'}}>
-            <div className="center-content event-info" style={{float: 'left', color: 'white'}}>
-              <h1 style={{fontWeight: 'bold', fontSize: '2rem', margin: '0px 0px 0px 5px'}}>{eventInfo.eventName}</h1>
+        <div className={styles.eventContainer}>
+          <div className={styles.floatRight}>
+            <div className={`${styles.centerContent} ${styles.eventInfo}`}>
+              <h1 className={styles.eventHeading}>{eventInfo.eventName}</h1>
               <TimeInfo eventInfo={eventInfo} />
               <PlaceInfo eventInfo={eventInfo}/>
-              <div style={{color: 'white', float: 'right'}}>
+              <div className={styles.infoContainer}>
               <p>
                 Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas Letraset, las cuales contenian
               </p>
             </div>
             </div>
           </div>
-          <div className="flyer-container center-content" style={{}}>
+          <div className={`${styles.flyerContainer} ${styles.centerContent}`}>
             <Image
-                        className="flyer"
+                        className={styles.flyer}
                         src="/flyer-default.jpg"
                         alt={eventInfo.eventName}
                         height={798}
                         width={504}
                         priority={true}
-                        style={{border: '5px solid white'}}
             />
-            <div style={{color: 'white', float: 'right', width: '100%', textAlign: 'left', marginRight: '20px', paddingLeft: '20px'}}>
+            <div className={styles.infoContainerOverflow}>
               <p>
               pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum. 
               </p>
             </div>
           </div>
+          <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
         </div>
         :
         <div>

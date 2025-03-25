@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { EventInfo } from '../page';
+import styles from '../eventStyles.module.css';
 interface MyProps {
   eventInfo: EventInfo;
 }
@@ -23,9 +24,9 @@ const PlaceInfo = (props: MyProps) => {
   }
 
   return (
-    <div style={{margin: '10px 0', border: '4px solid white', width: '56.5%', fontWeight: 'bold'}}>
-      <div style={{marginLeft: '10px', fontSize: '1.1rem'}}>{location}</div>
-      <div style={{marginLeft: '10px', fontSize: '1rem', cursor: 'pointer'}} onClick={selectMap}>{address}</div>
+    <div className={styles.placeContainer}>
+      <div className={styles.location}>{location}</div>
+      <div className={styles.address} onClick={selectMap}>{address}</div>
     </div>
   )
 }
