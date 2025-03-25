@@ -1,5 +1,17 @@
 import React from 'react';
 import Image from "next/image";
+import TimeInfo from './components/TimeInfo';
+import PlaceInfo from './components/PlaceInfo';
+
+export interface EventInfo {
+  eventName: string;
+  location: string;
+  recurring: string;
+  address: string;
+  eventStart: number;
+  originalStart: number;
+  originalEnd: string | number;
+}
 
 const Event = async ({
   searchParams,
@@ -36,11 +48,14 @@ const Event = async ({
         <div className="img-container" style={{}}>
           <div style={{float: 'right', width: '50%', marginRight: '2.5rem'}}>
             <div className="center-content event-info" style={{float: 'left', color: 'white'}}>
-              <p style={{fontWeight: 'bold', fontSize: '2.1rem'}}>{eventInfo.eventName}</p>
-              <div style={{marginLeft: '10px', cursor: 'pointer'}}>
-                <p>{eventInfo.location}</p>
-                <p>{eventInfo.address}</p>
-              </div>
+              <h1 style={{fontWeight: 'bold', fontSize: '2rem', margin: '0px 0px 0px 5px'}}>{eventInfo.eventName}</h1>
+              <TimeInfo eventInfo={eventInfo} />
+              <PlaceInfo eventInfo={eventInfo}/>
+              <div style={{color: 'white', float: 'right'}}>
+              <p>
+                Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas Letraset, las cuales contenian
+              </p>
+            </div>
             </div>
           </div>
           <div className="flyer-container center-content" style={{}}>
@@ -53,6 +68,11 @@ const Event = async ({
                         priority={true}
                         style={{border: '5px solid white'}}
             />
+            <div style={{color: 'white', float: 'right', width: '100%', textAlign: 'left', marginRight: '20px', paddingLeft: '20px'}}>
+              <p>
+              pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum. 
+              </p>
+            </div>
           </div>
         </div>
         :
@@ -60,7 +80,6 @@ const Event = async ({
           <p>event not found</p>
         </div>
       }
-      <div>{JSON.stringify(eventInfo)}</div>
     </div>
   )
 }

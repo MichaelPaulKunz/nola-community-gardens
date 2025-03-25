@@ -107,7 +107,7 @@ const EventListing = (props: Props) => {
   return (
     <div className="centerContent" style={{border: `3px solid ${state.borderColor}`, marginBottom: '1rem'}}>
       {state.isLoading ? 
-        <div style={{zIndex: '2', position: 'absolute', textAlign: 'center', marginLeft: '25%', marginTop: '4%'}}>
+        <div style={{zIndex: '2', position: 'absolute', textAlign: 'center', marginLeft: '20%', marginTop: '2%'}}>
           <Spinner />
         </div>
       :
