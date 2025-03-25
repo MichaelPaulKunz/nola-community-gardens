@@ -138,7 +138,7 @@ const Calendar = (props: Props) => {
           <h1 className="banner-month-year">{state.monthDate.toString().split(' ')[1]} {state.monthDate.toString().split(' ')[3]}</h1>
         </div>
         <div className="days-row">
-          {daysOfWeek.map((day)=> <DayHeading key={day} day={day}  />)}
+          {daysOfWeek ? daysOfWeek.map((day)=> <DayHeading key={day} day={day}  />) : null}
         </div>
         <div className="calendar">
           {state.squares.map((square)=> <DayTile key={square.id} dayEvents={square.dayEvents} fullDate={square.fullDate} weekDay={square.weekDay} dateDay={square.dateDay} isActiveDay={square.isActiveDay} openModal={openModal} eventLoaded={state.eventsLoaded}/>)}
