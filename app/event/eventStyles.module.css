@@ -118,18 +118,6 @@
 }
 
 @media screen and (max-width: 650px) {
-  /* :root {
-    --background: #ffffff;
-    --foreground: #171717;
-    --square: 14.255%;
-    --border: 1.5px;
-    --calendarWidth: 100%;
-    --calendarHeadingWidth: 100%;
-  }
-   */
-  /* body { */
-    /* background-color: lightgreen; */
-  }
 
   .centerBody {
     background-image: linear-gradient(to right, #73946996, #99949499);
