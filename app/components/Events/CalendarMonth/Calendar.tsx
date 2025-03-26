@@ -144,7 +144,6 @@ const Calendar = (props: Props) => {
           {state.squares.map((square)=> <DayTile key={square.id} dayEvents={square.dayEvents} fullDate={square.fullDate} weekDay={square.weekDay} dateDay={square.dateDay} isActiveDay={square.isActiveDay} openModal={openModal} eventLoaded={state.eventsLoaded}/>)}
         </div>
       </div>
-      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
     </div>
   )
 }
