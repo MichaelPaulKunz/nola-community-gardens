@@ -118,7 +118,7 @@
 }
 
 @media screen and (max-width: 650px) {
-  :root {
+  /* :root {
     --background: #ffffff;
     --foreground: #171717;
     --square: 14.255%;
@@ -126,7 +126,7 @@
     --calendarWidth: 100%;
     --calendarHeadingWidth: 100%;
   }
-  
+   */
   body {
     /* background-color: lightgreen; */
   }
