@@ -464,11 +464,11 @@ body {
   .time-place {
     margin-left: 0.5rem;
     font-size: 11px;
-    margin-top: -5px;
+    margin-top: 0px;
   }
 
   .event-name {
-    margin: 8 0 5 0;
+    margin: 8 0 10 0;
     font-size: 13;
     line-height: 10px;
   }
