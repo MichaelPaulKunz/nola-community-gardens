@@ -20,7 +20,8 @@ const EventListing = (props: Props) => {
     eventBackground: string;
     isLoading: boolean;
   }
-  console.log("selectedDate: ", props.selectedDate);
+  console.log('window: ', window.innerWidth)
+
   const [state, setState] = useState<MyState>({
     showDirectionsToolTip: false,
     showCopyToolTip: false,
@@ -31,21 +32,21 @@ const EventListing = (props: Props) => {
   });
 
   const { event } = props;
-  console.log('event: ', event);
   const { address, location, eventName, start, end, id } = event;
   const startString = parseTime(start);
-  let endString;
+  let endString, dash;
   if (end) {
     endString = end.includes(':') ? parseTime(end) : end;
+    dash = '-'
   } else {
-    endString = '??'
+    endString = ''
+    dash = ''
   }
-  console.log('props.selectedDate: ' , props.selectedDate);
+
+  const displayAddress: string = window.innerWidth >= 650 ? address : address.split(',')[0];
   const dateArray = props.selectedDate.split('-');
-  console.log('dateArray: ', dateArray);
   const timeZoneDate = new Date(+dateArray[0], +dateArray[1], +dateArray[2]);
-  console.log('timeZoneDate: ', timeZoneDate);
-  const timeZone = '(' + timeZoneDate.toString().split('(')[1];
+  const timeZone = window.innerWidth >= 650 ? '(' + timeZoneDate.toString().split('(')[1] : '';
 
   const selectMap = () => {
     if // apple maps
@@ -108,16 +109,16 @@ const EventListing = (props: Props) => {
   // console.log('time: ', getTimeStamp());
 
   return (
-    <div className="centerContent" style={{border: `3px solid ${state.borderColor}`, marginBottom: '1rem'}}>
+    <div className="event-listing" style={{borderColor: state.borderColor}}>
       {state.isLoading ? 
-        <div style={{zIndex: '2', position: 'absolute', textAlign: 'center', marginLeft: '20%', marginTop: '2%'}}>
+        <div className="spinner">
           <Spinner />
         </div>
       :
         null
       }
-       <div style={{float: 'right', margin: '3% 2% 0 2%', width: '30%', color: 'black'}}>
-        <span style={{float: 'left', width: '50%'}}>
+      <div className="list-icons-right">
+        <span className="map-pin">
           <svg onMouseOver={showDirectionsTip} onMouseOut={hideDirectionsTip} style={{float: 'left', cursor: 'pointer'}} onClick={selectMap} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-12">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
@@ -135,7 +136,7 @@ const EventListing = (props: Props) => {
           }
         </span>
         
-        <span style={{float: 'right', width: '50%'}}>
+        <span className="copy-icon">
         {
             state.showCopiedFlag
             ?
@@ -171,15 +172,26 @@ const EventListing = (props: Props) => {
           o: getTimeStamp().offset
         }
       }}>
-        <div onClick={loadEvent} onMouseOver={highlightEvent} onMouseOut={unlightEvent} style={{margin: '0.5rem 4rem 0.5rem 0.5rem', width: '60%', cursor: 'pointer', backgroundColor: state.eventBackground}}>
-          <h1 style={{fontWeight: 'bold', color: 'black', marginLeft: '1rem'}}>
+        <div onClick={loadEvent} onMouseOver={highlightEvent} onMouseOut={unlightEvent} className="event-info" style={{backgroundColor: state.eventBackground}}>
+          {window.innerWidth >= 650 ? 
+          <h1 className="place">
             {eventName} @ {location}
-          </h1>
-          <div style={{marginLeft: '1rem'}}>
-            { address }
+          </h1> :
+          <div className="place">
+            <h1 className="event-name">
+              {eventName}
+            </h1>
+            <h1 className="location">
+              {location}
+            </h1>
           </div>
-          <div style={{marginLeft: '1rem'}}> 
-            {startString} - {endString} {timeZone}
+          }
+
+          <div className="address">
+            { displayAddress }
+          </div>
+          <div className="time"> 
+            {startString} {dash} {endString} {timeZone}
           </div>  
         </div>
       </Link>

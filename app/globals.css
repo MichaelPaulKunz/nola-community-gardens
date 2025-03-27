@@ -243,21 +243,97 @@ body {
   margin: 0 20px;
 }
 
-.flyer-container {
-  width: 606.8px;
-  height: 798px;
+.spinner {
+  zIndex: 2;
+  position: absolute;
   text-align: center;
+  margin: 2% 0 0 20%;
 }
 
-.flyer {
-  width: 252px;
-  height: 399px;
-  /* text-align: center; */
+.list-icons-right {
+  float: right;
+  margin: 3% 2% 0 2%;
+  width: 30%;
+  color: black;
 }
 
-.event-info{
-  text-align: left;
-  width: 100px;
+.map-pin {
+  float: left;
+  width: 50%;
+}
+
+.copy-icon {
+  float: right;
+  width: 50%;
+}
+
+.event-listing {
+  border: 3px solid;
+  margin-bottom: 1rem;
+}
+
+.event-info {
+  margin: 0.5rem 4rem 0.5rem 0.5rem;
+  width: 60%;
+  cursor: pointer; 
+}
+
+.place {
+  font-weight: bold;
+  color: black;
+  margin-left: 0.5rem;
+}
+
+.time-place {
+  margin-left: 1rem;
+}
+
+.event-name {
+  margin: 0 0 0 5;
+  font-size: 20;
+  line-height: 10px;
+}
+
+.map-pin {
+  float: left;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+.copy-icon {
+  float: right;
+  margin-right: 0px;
+  margin-top: 0px;
+}
+
+.location {
+  line-height: 20px;
+  font-size: 20px;
+  margin-bottom: 0px;
+  margin-top: -4px;
+  color: dark-grey;
+}
+
+.address {
+  margin-left: 0.5rem;
+  font-size: 14px;
+  margin-top: -2px;
+}
+
+.time {
+  margin-left: 0.5rem;
+  font-size: 13px;
+  margin-top: -2px;
+}
+
+.mobile-modal {
+  margin: 0px -10px;
+}
+
+.mobile-modal-parent {
+  margin-right: -15px;
+  text-alin: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 650px) {
@@ -365,5 +441,77 @@ body {
     /* background-color: grey; */
     color: white;
     font-weight: bold;
+  }
+
+  .event-listing {
+    border: 1px solid;
+    margin-bottom: 0.4rem;
+  }
+
+  .event-info {
+    margin: 2px 0rem 0.2rem 0px;
+    width: 60%;
+    cursor: pointer; 
+  }
+
+  .place {
+    font-weight: bold;
+    color: black;
+    margin-left: 0.5rem;
+    font-size: 12px;
+  }
+  
+  .time-place {
+    margin-left: 0.5rem;
+    font-size: 11px;
+    margin-top: -5px;
+  }
+
+  .event-name {
+    margin: 8 0 5 0;
+    font-size: 13;
+    line-height: 10px;
+  }
+
+  .map-pin {
+    float: left;
+    margin-left: -30px;
+    margin-top: -0.5px;
+  }
+  
+  .copy-icon {
+    float: right;
+    margin-right: -2px;
+    margin-top: px;
+  }
+
+  .location {
+    line-height: 12px;
+    font-size: 11px;
+    margin-bottom: 0px;
+    margin-top: -4px;
+    color: dark-grey;
+  }
+
+  .address {
+    margin-left: 0.5rem;
+    font-size: 10.5px;
+    margin-top: -5px;
+  }
+
+  .time {
+    margin-left: 0.5rem;
+    font-size: 10.5px;
+    margin-top: -8px;
+  }
+
+  .mobile-modal {
+    margin: 0px -10px;
+  }
+
+  .mobile-modal-parent {
+    margin-right: -15px;
+    text-alin: center;
+    justify-content: center;
   }
 }

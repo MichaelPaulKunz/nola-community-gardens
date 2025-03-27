@@ -32,7 +32,7 @@ export default function EventsModal(props: Props) {
             <div className="fixed inset-0 bg-black/25"></div>
           </TransitionChild>
 
-          <div className="fixed inset-0 overflow-y-auto">
+          <div className="fixed inset-0 overflow-y-auto mobile-modal-parent">
             <div className="flex min-h-full items-center justify-center p-4 text-center" style={{paddingRight: '28px'}}>
               <TransitionChild
                 as={Fragment}
@@ -62,7 +62,7 @@ export default function EventsModal(props: Props) {
                       {readableDate}
                     </DialogTitle>
                     <div className="mt-2">
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-gray-500 mobile-modal">
                         {props.dayEvents.map((event, index) => <div key={`day_event_${index}`}><EventListing selectedDate={props.selectedDate} dayString={props.dayString} event={event}/></div>)}
                       </div>
                     </div>
