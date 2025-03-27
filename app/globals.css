@@ -468,9 +468,9 @@ body {
   }
 
   .event-name {
-    margin: 8px 0 16px 0;
-    font-size: 16px;
-    line-height: 16px;
+    margin: 8px 0 12px 0;
+    font-size: 14px;
+    line-height: 14px;
   }
 
   .map-pin {
