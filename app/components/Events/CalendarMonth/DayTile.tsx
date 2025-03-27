@@ -20,9 +20,9 @@ const DayTile = (props: Props) => {
   const todayFullDate = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
   console.log('todayFullDate: ', todayFullDate);
   const backGround = props.fullDate === todayFullDate ? 'limegreen' : 'white';
-
+  const squareHeight = window.innerWidth >= 650 ? '85px' : `${window.innerWidth / 7}px`
   return (
-    <div className='day-square' style={{backgroundColor: props.isActiveDay ? backGround : 'grey'}}>
+    <div className='day-square' style={{backgroundColor: props.isActiveDay ? backGround : 'grey', height: squareHeight}}>
       {props.isActiveDay ?
         <div>
           <div className='square-date'>{props.dateDay}</div>
