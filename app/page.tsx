@@ -63,7 +63,7 @@ export default function Home() {
       <div className="" style={{textAlign: 'center'}}>
         <ResourceMap />
         <br></br><br></br><br></br><br></br>
-        <p>UNDER CONSTANT CONSTRUCTION</p>
+        <p>UNDER CONSTRUCTION</p>
       </div>
       <div>
         <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
