@@ -28,8 +28,8 @@ const DayTile = (props: Props) => {
           <div className='square-date'>{props.dateDay}</div>
           {
             props.eventLoaded ?
-            <button onClick={() => props.openModal(props.dayEvents, props.fullDate)} style={{color: 'white'}} className='events-button fade-in'>
-              <div style={{marginBottom: '-0.4rem', height: '50%'}}>{props.dayEvents.length}</div>
+            <button onClick={() => props.openModal(props.dayEvents, props.fullDate)} style={{color: 'white', height: '50%'}} className='events-button fade-in'>
+              <div style={{ marginBottom: '-0.4rem' }}>{props.dayEvents.length}</div>
               {
                 props.dayEvents.length === 1 ? 
                 <div>Event</div>

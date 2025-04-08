@@ -137,10 +137,10 @@ const Calendar = (props: Props) => {
       <div className={`calendar-border ${state.fade} center-content`}>
         <div className='calendar-top-row'>
           <button className='month-last-button' onClick={lastMonth} disabled={!state.eventsLoaded}>
-            <CircleArrowLeft color="white" size={42} strokeWidth={3}/>
+            <CircleArrowLeft color="white" size={42} strokeWidth={3} />
           </button>
           <button className='month-next-button' onClick={nextMonth} disabled={!state.eventsLoaded}>
-          <CircleArrowRight color="white" size={42} strokeWidth={3}/>
+            <CircleArrowRight color="white" size={42} strokeWidth={3} />
           </button>
           <h1 className="banner-month-year">{state.monthDate.toString().split(' ')[1]} {state.monthDate.toString().split(' ')[3]}</h1>
         </div>
