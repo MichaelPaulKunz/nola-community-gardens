@@ -8,6 +8,9 @@ import DayHeading from './DayHeading';
 import EventsModal from '../Modals/EventsModal';
 import { GardenEvent } from '../Events';
 import { Day, UnformattedEvent } from '../../../page';
+import  { CircleArrowLeft }  from 'lucide-react';
+import  { CircleArrowRight }  from 'lucide-react';
+
 
 const daysOfWeek: string[] = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 interface Square {
@@ -130,11 +133,15 @@ const Calendar = (props: Props) => {
 
   return (
     <div className='calendar-container'>
-      <EventsModal dayString={today.toString()}isOpen={state.isModalOpen} closeModal={closeModal} dayEvents={state.dayEvents} selectedDate={state.selectedDate} />
+      <EventsModal dayString={today.toString()} isOpen={state.isModalOpen} closeModal={closeModal} dayEvents={state.dayEvents} selectedDate={state.selectedDate} />
       <div className={`calendar-border ${state.fade} center-content`}>
         <div className='calendar-top-row'>
-          <button className='month-last-button' onClick={lastMonth} disabled={!state.eventsLoaded}>⬅️</button>
-          <button className='month-next-button' onClick={nextMonth} disabled={!state.eventsLoaded}>➡️</button>
+          <button className='month-last-button' onClick={lastMonth} disabled={!state.eventsLoaded}>
+            <CircleArrowLeft color="white" size={48} strokeWidth={3}/>
+          </button>
+          <button className='month-next-button' onClick={nextMonth} disabled={!state.eventsLoaded}>
+          <CircleArrowRight color="white" size={48} strokeWidth={3}/>
+          </button>
           <h1 className="banner-month-year">{state.monthDate.toString().split(' ')[1]} {state.monthDate.toString().split(' ')[3]}</h1>
         </div>
         <div className="days-row">
