@@ -11,50 +11,38 @@ interface MyProps {
 const Tabs = (props: MyProps) => {
   interface MyState {
     view: string;
-    calendarBg: string;
-    listBg: string;
     calendarShadow: string;
     listShadow: string;
   }
 
   const [state, setState] = useState<MyState> ({
     view: 'calendar',
-    calendarBg: '#3e3d3d',
-    listBg: 'grey',
     calendarShadow: 'tab-pressed',
     listShadow: ''
   })
-
-  // const changeView = () => {
-  //   if (props.view === 'calendar') {
-  //     props.view = 'list';
-  //   } else {
-  //     props.view = 'calendar';
-  //   }
-  // }
 
   const selectCal = () => {
     if (state.view !== 'calendar') {
       props.changeView();
     }
-    setState({view: 'calendar', calendarBg: '#3e3d3d', listBg: 'grey', calendarShadow: 'tab-pressed', listShadow: ''});
+    setState({view: 'calendar', calendarShadow: 'tab-pressed', listShadow: ''});
   }
 
   const selectList = () => {
     if (state.view !== 'list') {
       props.changeView();
     }
-    setState({view: 'list', calendarBg: 'grey', listBg: '#3e3d3d', calendarShadow: '', listShadow: 'tab-pressed'});
+    setState({view: 'list', calendarShadow: 'tab-unpressed', listShadow: 'tab-pressed'});
   }
 
   return (
     <div className="center-content tab-bar">
-      <ul className="text-lg font-medium text-center text-gray-900 shadow-sm sm:flex dark:divide-gray-700 dark:text-gray-400">
+      <ul className="text-lg font-medium text-center text-gray-900 shadow-sm sm:flex dark:divide-gray-700 dark:text-gray-400 main-content">
           <li className="w-full">
-              <button onClick={selectCal} style={{float: 'left', backgroundColor: state.calendarBg}} className={` ${state.calendarShadow} tab inline-block border-r border-gray-200 dark:border-gray-700 dark:bg-gray-700 dark:text-white" aria-current="page"`}>Calendar</button>
+              <button onClick={selectCal} style={{float: 'left'}} className={`${state.calendarShadow} tab inline-block border-r dark:text-white" aria-current="page"`}>Calendar</button>
           </li>
           <li className="w-full">
-              <button onClick={selectList} style={{float: 'right', backgroundColor: state.listBg}} className={`${state.listShadow} tab inline-block border-r border-gray-200 dark:border-gray-700 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700`}>List</button>
+              <button onClick={selectList} style={{float: 'right'}} className={`${state.listShadow} tab inline-block border-r dark:hover:text-white`}>List</button>
           </li>
       </ul>
     </div>
