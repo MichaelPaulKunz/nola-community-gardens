@@ -134,7 +134,7 @@ const Calendar = (props: Props) => {
   return (
     <div className='calendar-container'>
       <EventsModal dayString={today.toString()} isOpen={state.isModalOpen} closeModal={closeModal} dayEvents={state.dayEvents} selectedDate={state.selectedDate} />
-      <div className={`calendar-border ${state.fade} center-content main-content`}>
+      <div className={`calendar-border ${state.fade} center-content`}>
         <div className='calendar-top-row'>
           <button className='month-last-button' onClick={lastMonth} disabled={!state.eventsLoaded}>
             <CircleArrowLeft color="white" size={42} strokeWidth={3} />
