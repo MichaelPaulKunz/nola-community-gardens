@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Events from "./components/Events/Events"
-import SidebarLeft from "./components/Sidebars/SidebarLeft";
-
+// import SidebarLeft from "./components/Sidebars/SidebarLeft";
+import MainMenu from "./components/Menus/MainMenu";
 export interface GardenEvent {
   weekDay: string;
   dates: string[];
@@ -48,11 +48,11 @@ export default function Home() {
 
   return (
     <>
-    <div className="vert-container">
+    {/* <div className="vert-container">
       <div className="three-dee-vert">
         <SidebarLeft />
       </div>
-    </div>
+    </div> */}
     <div className="center-body">
       <div className="img-container main-content">
         <Image
@@ -66,6 +66,9 @@ export default function Home() {
         />
       </div>
       <Events fetchEvents={fetchEvents} />
+      <div className='main-menu-container'>
+        <MainMenu currentPage='events'/>
+      </div>
       <div className="" style={{textAlign: 'center'}}>
         <br></br><br></br><br></br><br></br>
         <p className="fade-in">UNDER CONSTRUCTION</p>

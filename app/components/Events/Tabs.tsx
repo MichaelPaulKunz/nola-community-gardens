@@ -39,7 +39,7 @@ const Tabs = (props: MyProps) => {
     <div className="center-content tab-bar">
       <ul className="text-lg font-medium text-center text-gray-900 shadow-sm sm:flex dark:divide-gray-700 dark:text-gray-400 main-content">
           <li className="w-full">
-              <button onClick={selectCal} style={{float: 'left'}} className={`${state.calendarShadow} tab inline-block border-r dark:text-white" aria-current="page"`}>Calendar</button>
+              <button onClick={selectCal} style={{float: 'left'}} className={`${state.calendarShadow} tab-left inline-block border-r dark:text-white" aria-current="page"`}>Calendar</button>
           </li>
           <li className="w-full">
               <button onClick={selectList} style={{float: 'right'}} className={`${state.listShadow} tab inline-block border-r dark:hover:text-white`}>List</button>
