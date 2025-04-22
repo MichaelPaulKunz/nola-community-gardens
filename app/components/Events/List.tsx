@@ -79,7 +79,7 @@ const List = (props: Props) => {
   return (
     <div className={`center-content ${state.fade}`}>
         <div className='calendar-container'>
-          <div className='calendar-border center-content main-content'>
+          <div className='calendar-border center-content'>
             <h1 className="banner-month-year">{today.toString().split(' ')[1]} {today.toString().split(' ')[3]}</h1>
             {/* {state.events.map((event, index) => <div key={index}>{event.dates}</div>)} */}
             {
