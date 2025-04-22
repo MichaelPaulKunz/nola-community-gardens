@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Events from "./components/Events/Events"
-import ResourceMap from "./components/ResourceMap";
-
+// import SidebarLeft from "./components/Sidebars/SidebarLeft";
+import MainMenu from "./components/Menus/MainMenu";
 export interface GardenEvent {
   weekDay: string;
   dates: string[];
@@ -47,8 +47,14 @@ const fetchEvents = async (from: number, until: number, offset: number) => {
 export default function Home() {
 
   return (
+    <>
+    {/* <div className="vert-container">
+      <div className="three-dee-vert">
+        <SidebarLeft />
+      </div>
+    </div> */}
     <div className="center-body">
-      <div className="img-container">
+      <div className="img-container main-content">
         <Image
                 className="center-content"
                 src="/banner-main.png"
@@ -60,14 +66,17 @@ export default function Home() {
         />
       </div>
       <Events fetchEvents={fetchEvents} />
+      <div className='main-menu-container'>
+        <MainMenu currentPage='events'/>
+      </div>
       <div className="" style={{textAlign: 'center'}}>
-        <ResourceMap />
         <br></br><br></br><br></br><br></br>
-        <p>UNDER CONSTRUCTION</p>
+        <p className="fade-in">UNDER CONSTRUCTION</p>
       </div>
       <div>
         <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
       </div>      
     </div>
+    </>
   );
 }

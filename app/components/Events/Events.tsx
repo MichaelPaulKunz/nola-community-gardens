@@ -161,7 +161,10 @@ const Events = (props: Props) => {
 
 
   return (
-    <div>
+    <div className="fade-in">
+      {/* <div className="make-boxy">
+        <div className="three-dee-top-line"></div>
+      </div> */}
       <Tabs view={state.view} changeView={changeView} />
       {
         state.view === 'calendar' 
