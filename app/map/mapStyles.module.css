@@ -3,6 +3,10 @@
   height: 560px;
 }
 
+.map {
+  height: 560px;
+}
+
 @media screen and (max-width: 650px) {
   .mapContainer {
     height: 100%;
