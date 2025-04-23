@@ -1,0 +1,21 @@
+.createEvent {
+  height: 560px;
+  width: 610px;
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  color: white;
+  border: 5px solid white;
+}
+
+@media screen and (max-width: 650px) {
+  .createEvent {
+    height: 560px;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+    color: white;
+    border: 1px solid white;
+  }
+}

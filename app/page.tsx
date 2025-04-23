@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Events from "./components/Events/Events"
-import ResourceMap from "./components/ResourceMap";
+import MainMenu from "./components/Menus/MainMenu"
 
 export interface GardenEvent {
   weekDay: string;
@@ -60,8 +60,10 @@ export default function Home() {
         />
       </div>
       <Events fetchEvents={fetchEvents} />
+      <div className='main-menu-container'>
+        <MainMenu currentPage='events'/>
+      </div>
       <div className="" style={{textAlign: 'center'}}>
-        <ResourceMap />
         <br></br><br></br><br></br><br></br>
         <p>UNDER CONSTRUCTION</p>
       </div>
