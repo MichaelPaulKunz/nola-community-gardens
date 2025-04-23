@@ -25,7 +25,9 @@ const CreateEvent = () => {
         />
       </div>
       <div className={`fade-in ${styles.createEvent}`}>
-        Create Event
+        <div className={styles.create}>
+          Create Event
+        </div>
       </div>
       <div className='main-menu-container'>
         <MainMenu currentPage='createEvent'/>
