@@ -20,7 +20,9 @@ const gardens = () => {
         />
       </div>
       <div className={`fade-in ${styles.aboutUs}`}>
-        About Us
+        <div className={styles.about}>
+          About Us
+        </div>
       </div>
       <div className='main-menu-container'>
         <MainMenu currentPage='gardens'/>
