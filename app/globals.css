@@ -239,7 +239,7 @@ body {
   width: 100%;
   box-shadow: -5px 5px;
   background-color: black;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 6px;
 }
 
 .tab-pressed {
@@ -497,7 +497,7 @@ body {
   }
 
   .tab {
-    margin: 5px 5px 0 2px;
+    margin: 3px 5px 0 2px;
     textAlign: center;
     border-radius: 0.5rem 0.5rem 0 0;
     max-height: 40px; 
@@ -510,7 +510,7 @@ body {
   }
 
   .tab-left {
-    margin: 5px 1px 0 6px;
+    margin: 3px 1px 0 6px;
     textAlign: center;
     border-radius: 0.5rem 0.5rem 0 0;
     max-height: 40px; 
@@ -523,7 +523,7 @@ body {
   }
 
   .tab-pressed {
-    margin: 4px 0 0 0;
+    margin: 2px 0 0 0;
     border: 2px solid white;
     -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
