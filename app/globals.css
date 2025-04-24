@@ -506,7 +506,7 @@ body {
     /* background-color: grey; */
     color: white;
     font-weight: bold;
-    box-shadow: 4px 1px;
+    box-shadow: 3px 2px;
   }
 
   .tab-left {
@@ -519,7 +519,7 @@ body {
     color: white;
     font-weight: bold;
     background-color: black;
-    box-shadow: -4px 1px;
+    box-shadow: -3px 2px;
   }
 
   .tab-pressed {
