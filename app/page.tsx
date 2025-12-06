@@ -65,7 +65,7 @@ export default function Home() {
       </div>
       <div className="" style={{textAlign: 'center'}}>
         <br></br><br></br><br></br><br></br>
-        <p>UNDER CONSTRUCTION</p>
+        <p>under construction</p>
       </div>
       <div>
         <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
